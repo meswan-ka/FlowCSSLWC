@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="cssStyling" type="String" label="CSS Styling" description="Enter CSS rules to apply to the Flow container. Example: .flowContainer { background-color: #f0f0f0; }" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
