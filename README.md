@@ -418,6 +418,6 @@ This component is provided as-is for use in Salesforce orgs. Feel free to modify
 
 ---
 
-**Created by:** Flow CSS LWC Project  
+**Created by:** Marc Swan
 **Version:** 1.0.0  
-**Last Updated:** 2024
+**Last Updated:** June 11, 2025
