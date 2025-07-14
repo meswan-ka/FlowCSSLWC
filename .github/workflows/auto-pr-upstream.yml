@@ -1,0 +1,62 @@
+name: Auto PR to Upstream
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      pr_title:
+        description: 'PR Title'
+        required: false
+        default: 'Sync changes from fork'
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create Pull Request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Check if there are any differences with upstream
+          git remote add upstream https://github.com/meswan-ka/FlowCSSLWC.git || true
+          git fetch upstream main
+          
+          # Check if there are differences
+          if git diff --quiet HEAD upstream/main; then
+            echo "No differences with upstream. Skipping PR creation."
+            exit 0
+          fi
+          
+          # Get the latest commit message for PR description
+          LAST_COMMIT_MSG=$(git log -1 --pretty=%B)
+          
+          # Set PR title
+          if [ -n "${{ github.event.inputs.pr_title }}" ]; then
+            PR_TITLE="${{ github.event.inputs.pr_title }}"
+          else
+            PR_TITLE="Sync: $(git log -1 --pretty=%s)"
+          fi
+          
+          # Create PR using GitHub CLI
+          gh pr create \
+            --base main \
+            --head Marceswan:main \
+            --repo meswan-ka/FlowCSSLWC \
+            --title "$PR_TITLE" \
+            --body "## Automated PR from Fork
+
+          ### Latest Changes:
+          $LAST_COMMIT_MSG
+          
+          ### Commits included:
+          $(git log upstream/main..HEAD --oneline)
+          
+          ---
+          *This PR was automatically created by GitHub Actions*" \
+          || echo "PR already exists or could not be created"
