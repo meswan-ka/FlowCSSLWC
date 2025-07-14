@@ -103,6 +103,7 @@ If you want to manually create this component in an existing project:
 |----------|------|-------------|---------|
 | modalSize | String | Controls the width of the Flow modal (small, medium, large) | medium |
 | cssStyling | String | CSS rules to apply to the Flow container | - |
+| modalSizePercent | Integer | **Output** - The modal width as a percentage number (30, 60, or 80) | - |
 
 ## Examples
 
@@ -114,7 +115,13 @@ Simply select your desired modal size from the dropdown in the property editor:
 
 No CSS required for basic sizing!
 
-### Example 2: Custom Flow Background and Padding
+### Example 2: Using the Output Property
+The component outputs `modalSizePercent` as a whole number (30, 60, or 80) that can be used in your Flow:
+- Store it in a Flow variable for conditional logic
+- Pass it to other components that need to know the modal width
+- Use it in formulas or decision elements
+
+### Example 9: Custom Flow Background and Padding
 ```css
 .flowruntimeBody {
     background-color: #f4f6f9;
@@ -129,7 +136,7 @@ No CSS required for basic sizing!
 }
 ```
 
-### Example 3: Style Flow Headers and Buttons
+### Example 9: Style Flow Headers and Buttons
 ```css
 /* Style Flow header */
 .flowruntimeBody h2 {
@@ -159,7 +166,7 @@ No CSS required for basic sizing!
 }
 ```
 
-### Example 4: Responsive Design
+### Example 9: Responsive Design
 ```css
 /* Desktop styles */
 .slds-modal__container {
@@ -180,7 +187,7 @@ No CSS required for basic sizing!
 }
 ```
 
-### Example 5: Multi-Column Layout
+### Example 9: Multi-Column Layout
 ```css
 /* Create a two-column layout for form fields */
 .flowContainer .slds-form-element {
@@ -199,7 +206,7 @@ No CSS required for basic sizing!
 }
 ```
 
-### Example 6: Custom Progress Indicator
+### Example 9: Custom Progress Indicator
 ```css
 /* Style the Flow progress indicator */
 .slds-progress {
@@ -218,7 +225,7 @@ No CSS required for basic sizing!
 }
 ```
 
-### Example 7: Error Message Styling
+### Example 9: Error Message Styling
 ```css
 /* Custom error message styling */
 .flowruntimeBody .slds-text-color_error,
@@ -236,7 +243,7 @@ No CSS required for basic sizing!
 }
 ```
 
-### Example 8: Advanced Theming
+### Example 9: Advanced Theming
 ```css
 /* Define CSS variables for consistent theming */
 :root {
