@@ -2,8 +2,6 @@
 
 A Lightning Web Component that enables custom modal sizing and CSS styling for Salesforce Flow screens. This component allows administrators and developers to easily adjust Flow modal sizes and apply custom styles to Flow containers, modals, and elements without modifying the underlying Flow structure.
 
-[![Deploy to Salesforce](https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/src/main/webapp/resources/img/deploy.png)](https://githubsfdeploy.herokuapp.com?owner=Marceswan&repo=FlowCSSLWC-1)
-
 ## Table of Contents
 - [Features](#features)
 - [Installation](#installation)
@@ -28,21 +26,54 @@ A Lightning Web Component that enables custom modal sizing and CSS styling for S
 
 ## Installation
 
-### Deploy to Salesforce Org
+### 1. Deploy to Salesforce (Recommended)
 
-1. **Using Salesforce CLI:**
+[![Deploy to Salesforce](https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/src/main/webapp/resources/img/deploy.png)](https://githubsfdeploy.herokuapp.com?owner=Marceswan&repo=FlowCSSLWC-1)
+
+Click the button above to deploy directly to your Salesforce org.
+
+### 2. Deploy from Local Clone
+
+#### Clone the Repository
+```bash
+git clone https://github.com/Marceswan/FlowCSSLWC-1.git
+cd FlowCSSLWC-1
+```
+
+##### Using Salesforce CLI
+```bash
+# Authenticate to your org
+sfdx force:auth:web:login -a YourOrgAlias
+
+# Deploy the source
+sfdx force:source:deploy -p force-app -u YourOrgAlias
+```
+
+##### Using VS Code
+1. Open the cloned project in VS Code
+2. Authorize an org:
+   - Press `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows/Linux)
+   - Type "SFDX: Authorize an Org"
+   - Follow the login prompts
+3. Deploy the source:
+   - Right-click on the `force-app` folder
+   - Select "SFDX: Deploy Source to Org"
+
+### 3. Manual Creation (inside existing SFDX Project)
+
+If you want to manually create this component in an existing project:
+
+1. Create the main component:
    ```bash
-   sfdx force:auth:web:login -a YourOrgAlias
-   sfdx force:source:deploy -p force-app -u YourOrgAlias
+   sfdx force:lightning:component:create -n flowCSSLWC -d force-app/main/default/lwc
    ```
 
-2. **Using VS Code:**
-   - Right-click on the `force-app` folder
-   - Select "Deploy Source to Org"
+2. Create the property editor component:
+   ```bash
+   sfdx force:lightning:component:create -n flowCSSLWCPropertyEditor -d force-app/main/default/lwc
+   ```
 
-3. **Manual Installation:**
-   - Create a new Lightning Web Component named `flowCSSLWC`
-   - Copy the contents of each file to your org
+3. Copy the contents of each file from this repository to your corresponding files
 
 ## Usage
 
@@ -50,11 +81,11 @@ A Lightning Web Component that enables custom modal sizing and CSS styling for S
 
 1. **Edit your Screen Flow:**
    - Open Flow Builder
-   - Add a new Screen element or edit an existing one
+   - Add a new Screen element or edit an existing one (Component works best when put into the _first_ screen!)
 
 2. **Add the Custom Flow Size/CSS Component:**
    - In the screen editor, search for "Custom Flow Size/CSS" in the components panel
-   - Drag it onto your screen (typically at the top)
+   - Drag it onto your screen (Doesn't matter where - it's entirely headless. tl;dr - It doesn't show up in the screen where components go.)
 
 3. **Configure Component Settings:**
    - Click on the component to open the custom property editor
