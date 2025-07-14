@@ -6,7 +6,8 @@
         <target>lightning__FlowScreen</target>
     </targets>
     <targetConfigs>
-        <targetConfig targets="lightning__FlowScreen">
+        <targetConfig targets="lightning__FlowScreen" configurationEditor="c-flow-c-s-s-l-w-c-property-editor">
+            <property name="modalSize" type="String" label="Modal Size" description="Set the size of the flow modal (small, medium, or large)" default="medium" />
             <property name="cssStyling" type="String" label="CSS Styling" description="Enter CSS rules to apply to the Flow container. Example: .flowContainer { background-color: #f0f0f0; }" />
         </targetConfig>
     </targetConfigs>
