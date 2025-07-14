@@ -1,8 +1,10 @@
 import { LightningElement, api } from 'lwc';
+import { FlowAttributeChangeEvent } from 'lightning/flowSupport';
 
 export default class FlowCSSLWC extends LightningElement {
     @api cssStyling;
     @api modalSize = 'medium';
+    @api modalSizePercent;
     _hasInjectedStyles = false;
 
     connectedCallback() {
@@ -66,6 +68,13 @@ export default class FlowCSSLWC extends LightningElement {
             large: '80%'
         };
         const modalWidth = widthMap[this.modalSize] || '60%';
+        
+        // Extract numeric percentage and dispatch to Flow
+        const percentValue = parseInt(modalWidth.replace('%', ''));
+        if (this.modalSizePercent !== percentValue) {
+            this.modalSizePercent = percentValue;
+            this.dispatchEvent(new FlowAttributeChangeEvent('modalSizePercent', percentValue));
+        }
         
         // Try multiple approaches to find and style the Flow modal
         
