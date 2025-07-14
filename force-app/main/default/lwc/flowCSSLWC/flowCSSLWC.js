@@ -2,10 +2,11 @@ import { LightningElement, api } from 'lwc';
 
 export default class FlowCSSLWC extends LightningElement {
     @api cssStyling;
+    @api modalSize = 'medium';
     _hasInjectedStyles = false;
 
     connectedCallback() {
-        if (this.cssStyling) {
+        if (this.cssStyling || this.modalSize) {
             // Delay to ensure Flow modal is rendered
             setTimeout(() => {
                 this.applyCustomStyles();
@@ -14,7 +15,7 @@ export default class FlowCSSLWC extends LightningElement {
     }
 
     renderedCallback() {
-        if (this.cssStyling && !this._hasInjectedStyles) {
+        if ((this.cssStyling || this.modalSize) && !this._hasInjectedStyles) {
             this.applyCustomStyles();
         }
     }
@@ -58,6 +59,14 @@ export default class FlowCSSLWC extends LightningElement {
     }
 
     applyFlowModalStyles() {
+        // Get the width percentage based on modal size
+        const widthMap = {
+            small: '30%',
+            medium: '60%',
+            large: '80%'
+        };
+        const modalWidth = widthMap[this.modalSize] || '60%';
+        
         // Try multiple approaches to find and style the Flow modal
         
         // Approach 1: Look for the modal in the document
@@ -65,8 +74,8 @@ export default class FlowCSSLWC extends LightningElement {
         modalContainers.forEach(container => {
             if (container) {
                 // Apply inline styles as a fallback
-                container.style.minWidth = '80%';
-                container.style.width = '80%';
+                container.style.minWidth = modalWidth;
+                container.style.width = modalWidth;
             }
         });
 
@@ -77,8 +86,8 @@ export default class FlowCSSLWC extends LightningElement {
                 (currentElement.classList.contains('modal-container') || 
                  currentElement.classList.contains('slds-modal__container') ||
                  currentElement.classList.contains('flowruntimeBody'))) {
-                currentElement.style.minWidth = '80%';
-                currentElement.style.width = '80%';
+                currentElement.style.minWidth = modalWidth;
+                currentElement.style.width = modalWidth;
             }
             currentElement = currentElement.parentElement;
         }
@@ -89,12 +98,12 @@ export default class FlowCSSLWC extends LightningElement {
             
             /* Additional Flow-specific selectors */
             .slds-modal__container {
-                min-width: 80% !important;
-                width: 80% !important;
+                min-width: ${modalWidth} !important;
+                width: ${modalWidth} !important;
             }
             
             .flowruntimeBody {
-                min-width: 80% !important;
+                min-width: ${modalWidth} !important;
             }
             
             .flowruntimeBody .flowContainer {
@@ -103,12 +112,12 @@ export default class FlowCSSLWC extends LightningElement {
             
             /* Target various modal implementations */
             [class*="modal"] [class*="container"] {
-                min-width: 80% !important;
+                min-width: ${modalWidth} !important;
             }
             
             /* Target by data attributes if present */
             [data-aura-class*="uiModal"] .modal-container {
-                min-width: 80% !important;
+                min-width: ${modalWidth} !important;
             }
         `;
         
