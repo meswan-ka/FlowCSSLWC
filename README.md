@@ -1,6 +1,8 @@
-# Flow CSS Lightning Web Component
+# Custom Flow Size/CSS Lightning Web Component
 
-A Lightning Web Component that enables custom CSS styling for Salesforce Flow screens. This component allows administrators and developers to apply custom styles to Flow containers, modals, and elements without modifying the underlying Flow structure.
+A Lightning Web Component that enables custom modal sizing and CSS styling for Salesforce Flow screens. This component allows administrators and developers to easily adjust Flow modal sizes and apply custom styles to Flow containers, modals, and elements without modifying the underlying Flow structure.
+
+[![Deploy to Salesforce](https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/src/main/webapp/resources/img/deploy.png)](https://githubsfdeploy.herokuapp.com?owner=Marceswan&repo=FlowCSSLWC-1)
 
 ## Table of Contents
 - [Features](#features)
@@ -14,6 +16,8 @@ A Lightning Web Component that enables custom CSS styling for Salesforce Flow sc
 
 ## Features
 
+- ✅ **Modal Size Control** - Choose from Small (30%), Medium (60%), or Large (80%) modal sizes
+- ✅ **Custom Property Editor** - User-friendly interface in Flow Builder
 - ✅ Apply custom CSS to Flow screens
 - ✅ Style Flow modal containers (width, height, background, etc.)
 - ✅ Override default SLDS styles
@@ -48,32 +52,36 @@ A Lightning Web Component that enables custom CSS styling for Salesforce Flow sc
    - Open Flow Builder
    - Add a new Screen element or edit an existing one
 
-2. **Add the Flow CSS Component:**
-   - In the screen editor, search for "Flow CSS LWC" in the components panel
+2. **Add the Custom Flow Size/CSS Component:**
+   - In the screen editor, search for "Custom Flow Size/CSS" in the components panel
    - Drag it onto your screen (typically at the top)
 
-3. **Configure CSS Styling:**
-   - Click on the component
-   - In the properties panel, find "CSS Styling"
-   - Enter your CSS rules
+3. **Configure Component Settings:**
+   - Click on the component to open the custom property editor
+   - Select your desired Modal Size:
+     - Small (30% width)
+     - Medium (60% width) - Default
+     - Large (80% width)
+   - Enter any additional CSS rules in the CSS Styling field
 
 4. **Save and Activate your Flow**
 
 ### Component Properties
 
-| Property | Type | Description |
-|----------|------|-------------|
-| cssStyling | String | CSS rules to apply to the Flow container |
+| Property | Type | Description | Default |
+|----------|------|-------------|---------|
+| modalSize | String | Controls the width of the Flow modal (small, medium, large) | medium |
+| cssStyling | String | CSS rules to apply to the Flow container | - |
 
 ## Examples
 
-### Example 1: Basic Modal Width Adjustment
-```css
-.slds-modal__container {
-    min-width: 80% !important;
-    max-width: 1200px !important;
-}
-```
+### Example 1: Using the Modal Size Property
+Simply select your desired modal size from the dropdown in the property editor:
+- **Small**: 30% screen width - Great for simple forms or confirmations
+- **Medium**: 60% screen width - Default size, suitable for most use cases  
+- **Large**: 80% screen width - Ideal for complex forms or data displays
+
+No CSS required for basic sizing!
 
 ### Example 2: Custom Flow Background and Padding
 ```css
@@ -419,5 +427,14 @@ This component is provided as-is for use in Salesforce orgs. Feel free to modify
 ---
 
 **Created by:** Marc Swan
-**Version:** 1.0.0  
-**Last Updated:** June 11, 2025
+**Version:** 2.0.0  
+**Last Updated:** July 14, 2025
+
+## Changelog
+
+### Version 2.0.0 (July 14, 2025)
+- Added modal size control property with Small (30%), Medium (60%), and Large (80%) options
+- Created custom property editor for better user experience in Flow Builder
+- Improved style injection for better modal width control
+- Updated component masterLabel to "Custom Flow Size/CSS"
+- Added Deploy to Salesforce button for easy installation

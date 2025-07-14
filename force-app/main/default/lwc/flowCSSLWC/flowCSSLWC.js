@@ -22,7 +22,7 @@ export default class FlowCSSLWC extends LightningElement {
 
     applyCustomStyles() {
         // Create a style element to hold our custom CSS
-        const styleId = 'ka-flow-custom-styles';
+        const styleId = 'flow-custom-styles';
         let styleElement = this.template.querySelector(`[data-id="${styleId}"]`);
         
         if (!styleElement) {
@@ -45,7 +45,7 @@ export default class FlowCSSLWC extends LightningElement {
     }
 
     injectGlobalStyles() {
-        const globalStyleId = 'ka-flow-global-styles';
+        const globalStyleId = 'flow-global-styles';
         let globalStyle = document.getElementById(globalStyleId);
         
         if (!globalStyle) {
@@ -122,7 +122,7 @@ export default class FlowCSSLWC extends LightningElement {
         `;
         
         // Update the global styles with enhanced selectors
-        const globalStyle = document.getElementById('ka-flow-global-styles');
+        const globalStyle = document.getElementById('flow-global-styles');
         if (globalStyle) {
             globalStyle.textContent = enhancedStyles;
         }
@@ -130,7 +130,7 @@ export default class FlowCSSLWC extends LightningElement {
 
     disconnectedCallback() {
         // Clean up global styles when component is removed
-        const globalStyle = document.getElementById('ka-flow-global-styles');
+        const globalStyle = document.getElementById('flow-global-styles');
         if (globalStyle) {
             globalStyle.remove();
         }
