@@ -121,7 +121,7 @@ The component outputs `modalSizePercent` as a whole number (30, 60, or 80) that 
 - Pass it to other components that need to know the modal width
 - Use it in formulas or decision elements
 
-### Example 9: Custom Flow Background and Padding
+### Example 3: Custom Flow Background and Padding
 ```css
 .flowruntimeBody {
     background-color: #f4f6f9;
@@ -136,7 +136,7 @@ The component outputs `modalSizePercent` as a whole number (30, 60, or 80) that 
 }
 ```
 
-### Example 9: Style Flow Headers and Buttons
+### Example 4: Style Flow Headers and Buttons
 ```css
 /* Style Flow header */
 .flowruntimeBody h2 {
@@ -166,7 +166,7 @@ The component outputs `modalSizePercent` as a whole number (30, 60, or 80) that 
 }
 ```
 
-### Example 9: Responsive Design
+### Example 5: Responsive Design
 ```css
 /* Desktop styles */
 .slds-modal__container {
@@ -187,7 +187,7 @@ The component outputs `modalSizePercent` as a whole number (30, 60, or 80) that 
 }
 ```
 
-### Example 9: Multi-Column Layout
+### Example 6: Multi-Column Layout
 ```css
 /* Create a two-column layout for form fields */
 .flowContainer .slds-form-element {
@@ -206,7 +206,7 @@ The component outputs `modalSizePercent` as a whole number (30, 60, or 80) that 
 }
 ```
 
-### Example 9: Custom Progress Indicator
+### Example 7: Custom Progress Indicator
 ```css
 /* Style the Flow progress indicator */
 .slds-progress {
@@ -225,7 +225,7 @@ The component outputs `modalSizePercent` as a whole number (30, 60, or 80) that 
 }
 ```
 
-### Example 9: Error Message Styling
+### Example 8: Error Message Styling
 ```css
 /* Custom error message styling */
 .flowruntimeBody .slds-text-color_error,
